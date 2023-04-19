@@ -33,7 +33,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!isAlive) {return;}
         {
-            Run();    
+            Run();
+            SpriteDirection();    
         }    
     }
 
@@ -52,4 +53,12 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("IsRunning", playerHasHorizontalSpeed);
     }
 
+    void SpriteDirection()
+    {
+        bool playerHasHorizontalSpeed = Mathf.Abs(rigidbody.velocity.x) > Mathf.Epsilon;
+        if(playerHasHorizontalSpeed)
+        {
+            transform.localScale = new Vector2(Mathf.Sign(rigidbody.velocity.x), 1f);
+        }
+    }
 }

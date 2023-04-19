@@ -66,7 +66,8 @@ public class PlayerMovement : MonoBehaviour
         if(!feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))  {return;}
         if(input.isPressed)
         {
-            rigidbody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);    
+            rigidbody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+
         }  
     }
 

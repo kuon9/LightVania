@@ -15,16 +15,22 @@ public class PlayerMovement : MonoBehaviour
     Vector2 MovementInput;
 
     public bool isAlive = true;
+    public bool isJumping;
 
 
+    AudioSource audioSource;
     Animator anim;
     Rigidbody2D rigidbody;
+    BoxCollider2D feetCollider;
     
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
+        feetCollider = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
+
             
     }
 
@@ -53,6 +59,18 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("IsRunning", playerHasHorizontalSpeed);
     }
 
+    
+    void OnJump(InputValue input)
+    {
+        if(!isAlive) {return;}
+        if(!feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))  {return;}
+        if(input.isPressed)
+        {
+            rigidbody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);    
+        }  
+    }
+
+    
     void SpriteDirection()
     {
         bool playerHasHorizontalSpeed = Mathf.Abs(rigidbody.velocity.x) > Mathf.Epsilon;

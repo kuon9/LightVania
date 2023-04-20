@@ -11,11 +11,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float playerSpeed = 10f;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
+    [SerializeField] float distanceToCheck = 0.5f;
 
     Vector2 MovementInput;
 
     public bool isAlive = true;
-    public bool isJumping;
+    public bool isGrounded;
 
 
     AudioSource audioSource;
@@ -63,15 +64,29 @@ public class PlayerMovement : MonoBehaviour
     void OnJump(InputValue input)
     {
         if(!isAlive) {return;}
-        if(!feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))  {return;}
+        bool isTouchingGround = feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
+        //if(!feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))  {return;}
+        if(!isTouchingGround)
+        {
+           return;
+        }
         if(input.isPressed)
         {
             rigidbody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
-
+            anim.SetBool("IsJumping", isTouchingGround);
         }  
     }
 
-    
+    void OnTriggerEnter2D()
+    {
+        if(feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            anim.SetBool("IsJumping", false);
+        }
+    }
+
+
+
     void SpriteDirection()
     {
         bool playerHasHorizontalSpeed = Mathf.Abs(rigidbody.velocity.x) > Mathf.Epsilon;

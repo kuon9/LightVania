@@ -67,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
             //anim.SetTrigger("IsShooting");
             anim.SetBool("IsShooting", true);
             Debug.Log("Firing");
-            Instantiate(arrow, arrowSpawn.position, Quaternion.identity);
             StartCoroutine(FireReset());    
         }
     }
@@ -100,6 +99,12 @@ public class PlayerMovement : MonoBehaviour
         //canMove = true;
         playerSpeed = 4f;
     }
+
+    void ProjectileFire()
+    {
+        Instantiate(arrow, arrowSpawn.position, Quaternion.identity);
+    }
+
 
     void Run()
     {

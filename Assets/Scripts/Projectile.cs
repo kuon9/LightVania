@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
    
    
    [SerializeField] float arrowSpeed =  2f;
+   [SerializeField] GameObject arrow;
    Rigidbody2D myRigidbody;
    PlayerMovement player; // referencing from our own PlayerMovement script
    float arrowVelocity;
@@ -51,11 +52,11 @@ public class Projectile : MonoBehaviour
     {
         if(player.transform.localScale.x == 1)
         {
-            this.transform.rotation = Quaternion.Euler(0,0,0);
+            arrow.transform.rotation = Quaternion.Euler(0,0,0);
         }
         else if (player.transform.localScale.x == -1)
         {
-            this.transform.rotation = Quaternion.Euler(0,0,180);
+            arrow.transform.rotation = Quaternion.Euler(0,0,180);
         }
     }
 

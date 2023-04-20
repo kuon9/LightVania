@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float climbSpeed = 5f;
     [SerializeField] float distanceToCheck = 0.5f;
 
+    [Header("Arrow")]
+    [SerializeField] GameObject  arrow;
+    [SerializeField] Transform arrowSpawn;
+
     Vector2 MovementInput;
 
     public bool isAlive = true;
@@ -51,6 +55,24 @@ public class PlayerMovement : MonoBehaviour
         MovementInput = input.Get<Vector2>();
     }
 
+    void OnRange(InputValue input)
+    {
+        if(!isAlive) {return;}
+        {
+            playerSpeed = 0f;
+            anim.SetBool("IsShooting", true);
+            Instantiate(arrow, arrowSpawn.position, Quaternion.identity);
+            StartCoroutine(FireReset());    
+        }
+    }
+
+    IEnumerator FireReset()
+    {
+        yield return new WaitForSeconds(0.1f);
+        anim.SetBool("IsShooting", false);
+        playerSpeed = 4f;
+    }
+
     void Run()
     {
         Vector2 playervelocity = new Vector2(MovementInput.x * playerSpeed, rigidbody.velocity.y);
@@ -66,10 +88,7 @@ public class PlayerMovement : MonoBehaviour
         if(!isAlive) {return;}
         bool isTouchingGround = feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
         //if(!feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))  {return;}
-        if(!isTouchingGround)
-        {
-           return;
-        }
+        if(!isTouchingGround) {return;}
         if(input.isPressed)
         {
             rigidbody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);

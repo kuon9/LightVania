@@ -11,12 +11,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float playerSpeed = 10f;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
-    [SerializeField] float distanceToCheck = 0.5f;
-
+    
 
     [Header("Arrow")]
-    // [SerializeField] GameObject  arrow;
-    // [SerializeField] Transform arrowSpawn;
+     [SerializeField] GameObject  arrow;
+     [SerializeField] Transform arrowSpawn;
 
     Vector2 MovementInput;
 
@@ -59,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnRange(InputValue input)
+    public void OnRange(InputValue input)
     {
         if(!isAlive) {return;}
         {
@@ -68,13 +67,13 @@ public class PlayerMovement : MonoBehaviour
             //anim.SetTrigger("IsShooting");
             anim.SetBool("IsShooting", true);
             Debug.Log("Firing");
-            // Instantiate(arrow, arrowSpawn.position, Quaternion.identity);
+            Instantiate(arrow, arrowSpawn.position, Quaternion.identity);
             StartCoroutine(FireReset());    
         }
     }
 
 
-    void OnMelee(InputValue input)
+    public void OnMelee(InputValue input)
     {
         if(!isAlive) {return;}
         {
@@ -94,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
         playerSpeed = 4f;
     }
 
-        IEnumerator AttackReset()
+    IEnumerator AttackReset()
     {
         yield return new WaitForSeconds(0.8f);
         anim.SetBool("IsAttacking", false);

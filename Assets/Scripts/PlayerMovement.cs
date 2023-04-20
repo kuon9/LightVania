@@ -13,15 +13,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float climbSpeed = 5f;
     [SerializeField] float distanceToCheck = 0.5f;
 
+
     [Header("Arrow")]
-    [SerializeField] GameObject  arrow;
-    [SerializeField] Transform arrowSpawn;
+    // [SerializeField] GameObject  arrow;
+    // [SerializeField] Transform arrowSpawn;
 
     Vector2 MovementInput;
 
     public bool isAlive = true;
-    public bool isGrounded;
-
+    //bool canMove;
 
     AudioSource audioSource;
     Animator anim;
@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if(!isAlive) {return;}
+        // if(canMove)
         {
             Run();
             SpriteDirection();    
@@ -52,7 +53,10 @@ public class PlayerMovement : MonoBehaviour
     void OnMove(InputValue input)
     {
         if(!isAlive) {return;}
-        MovementInput = input.Get<Vector2>();
+        // if(canMove)
+        {
+            MovementInput = input.Get<Vector2>();    
+        }
     }
 
     void OnRange(InputValue input)
@@ -60,16 +64,41 @@ public class PlayerMovement : MonoBehaviour
         if(!isAlive) {return;}
         {
             playerSpeed = 0f;
+            //canMove = false;
+            //anim.SetTrigger("IsShooting");
             anim.SetBool("IsShooting", true);
-            Instantiate(arrow, arrowSpawn.position, Quaternion.identity);
+            Debug.Log("Firing");
+            // Instantiate(arrow, arrowSpawn.position, Quaternion.identity);
             StartCoroutine(FireReset());    
+        }
+    }
+
+
+    void OnMelee(InputValue input)
+    {
+        if(!isAlive) {return;}
+        {
+            playerSpeed = 0f;
+            //canMove = false;
+            anim.SetBool("IsAttacking", true);
+            //anim.SetTrigger("IsAttacking")
+            StartCoroutine(AttackReset());
         }
     }
 
     IEnumerator FireReset()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.8f);
         anim.SetBool("IsShooting", false);
+        //canMove = true;
+        playerSpeed = 4f;
+    }
+
+        IEnumerator AttackReset()
+    {
+        yield return new WaitForSeconds(0.8f);
+        anim.SetBool("IsAttacking", false);
+        //canMove = true;
         playerSpeed = 4f;
     }
 
@@ -103,8 +132,6 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("IsJumping", false);
         }
     }
-
-
 
     void SpriteDirection()
     {

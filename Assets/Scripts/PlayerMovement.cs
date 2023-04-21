@@ -129,11 +129,23 @@ public class PlayerMovement : MonoBehaviour
         }  
     }
 
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D other)
     {
         if(feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             anim.SetBool("IsJumping", false);
+        }
+        else if(other.tag == "Platform")
+        {
+            player.transform.parent = other.gameObject.transform;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.tag == "Platform")
+        {
+            player.transform.parent = null;
         }
     }
 

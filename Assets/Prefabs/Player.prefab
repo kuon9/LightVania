@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8464498810094444787}
-  - component: {fileID: 5852803814976040121}
   m_Layer: 8
   m_Name: Ranged Attack
   m_TagString: Untagged
@@ -32,19 +31,6 @@ Transform:
   m_Father: {fileID: 7501218966529279108}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5852803814976040121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7255681947274346756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e548cac48b411694aa3a4ee2e766f6a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 8230058054506839999, guid: 7a2250a8a053d7b48960e84fcfaae098, type: 3}
 --- !u!1 &7501218966529279110
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +110,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 1852956568, guid: 70f1556868df7c0448cc18d336525378, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -166,7 +152,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 7501218966529279110}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f437f916dc846814cb6f4de5aaff923d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -182,7 +168,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 7501218966529279110}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f437f916dc846814cb6f4de5aaff923d, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -265,4 +251,6 @@ MonoBehaviour:
   playerSpeed: 4
   jumpSpeed: 7
   climbSpeed: 5
+  arrow: {fileID: 8230058054506839999, guid: 7a2250a8a053d7b48960e84fcfaae098, type: 3}
+  arrowSpawn: {fileID: 8464498810094444787}
   isAlive: 1

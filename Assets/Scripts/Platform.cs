@@ -6,7 +6,7 @@ public class Platform : MonoBehaviour
 {
     [SerializeField] Transform pos1, pos2;
     [SerializeField] float speed;
-
+    [SerializeField] GameObject player;
     Vector3 nextPos;
 
     // Start is called before the first frame update
@@ -27,6 +27,22 @@ public class Platform : MonoBehaviour
             nextPos = pos1.position;
         }
         transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.CompareTag("Player"))
+        {
+            player.transform.SetParent(this.transform);
+        }
+    }
+
+    void CollisionExit2D(Collision2D col)
+    {
+        if(col.gameObject.CompareTag("Player"))
+        {
+            player.transform.parent = null;    
+        }
     }
 
     void OnDrawGizmos()

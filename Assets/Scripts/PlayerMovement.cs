@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float playerSpeed = 10f;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
+    [SerializeField] float fallGravityMultiplier = 2f;
+    [SerializeField] float gravityScale = 1f;
     
 
     [Header("Arrow")]
@@ -20,13 +22,15 @@ public class PlayerMovement : MonoBehaviour
     Vector2 MovementInput;
 
     public bool isAlive = true;
-    bool isGrounded = true;
+    //bool isGrounded = true;
     //bool canMove;
+    bool isJumping;
 
     AudioSource audioSource;
     Animator anim;
     Rigidbody2D rigidbody;
     BoxCollider2D feetCollider;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -34,9 +38,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
         feetCollider = GetComponent<BoxCollider2D>();
-        audioSource = GetComponent<AudioSource>();
-
-            
+        audioSource = GetComponent<AudioSource>(); 
     }
 
     // Update is called once per frame
@@ -46,8 +48,17 @@ public class PlayerMovement : MonoBehaviour
         // if(canMove)
         {
             Run();
-            SpriteDirection();    
+            SpriteDirection();  
         }    
+        // we're creating down button to affect fall gravity multiplier;
+        // if(rigidbody.velocity.y < 0)
+        // {
+        //     rigidbody.gravityScale = gravityScale * fallGravityMultiplier;
+        // }
+        // else
+        // {
+        //     rigidbody.gravityScale = gravityScale;
+        // }
     }
 
     void OnMove(InputValue input)
@@ -116,7 +127,15 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("IsRunning", playerHasHorizontalSpeed);
     }
 
-    
+    void OnDown(InputValue input)
+    {
+        //we're creating down button to affect fall gravity multiplier;
+        if(isJumping)
+        {
+            rigidbody.gravityScale = gravityScale * fallGravityMultiplier;
+        }
+    }
+
     void OnJump(InputValue input)
     {
         if(!isAlive) {return;}
@@ -127,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rigidbody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
             anim.SetBool("IsJumping", true);
+            isJumping = true;
         }  
     }
     void OnTriggerEnter2D(Collider2D other)
@@ -134,6 +154,8 @@ public class PlayerMovement : MonoBehaviour
         if(feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground","Hazards")))
         {
             anim.SetBool("IsJumping", false);
+            isJumping = false;
+            rigidbody.gravityScale = gravityScale;
         }
         else if(other.tag == "Hazards")
         {

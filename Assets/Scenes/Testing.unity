@@ -5887,6 +5887,10 @@ PrefabInstance:
       propertyPath: jumpSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7501218967529501213, guid: 24e6fdad4725da4459de55a53406ef64, type: 3}
+      propertyPath: fallGravityMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24e6fdad4725da4459de55a53406ef64, type: 3}
 --- !u!1 &7501218967529501212 stripped

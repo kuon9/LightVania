@@ -37,7 +37,7 @@ public class Platform : MonoBehaviour
         }
     }
 
-    void CollisionExit2D(Collision2D col)
+    void OnCollisionExit2D(Collision2D col)
     {
         if(col.gameObject.CompareTag("Player"))
         {

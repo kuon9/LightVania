@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 MovementInput;
 
     public bool isAlive = true;
+    bool isGrounded = true;
     //bool canMove;
 
     AudioSource audioSource;
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(!isAlive) {return;}
         // if(canMove)
@@ -125,10 +126,9 @@ public class PlayerMovement : MonoBehaviour
         if(input.isPressed)
         {
             rigidbody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
-            anim.SetBool("IsJumping", isTouchingGround);
+            anim.SetBool("IsJumping", true);
         }  
     }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if(feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))

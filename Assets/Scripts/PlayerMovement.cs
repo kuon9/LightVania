@@ -153,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground","Hazards")))
         {
-            anim.SetBool("IsJumping", false);
+            anim.SetBool("IsJumping",false);
             isJumping = false;
             rigidbody.gravityScale = gravityScale;
         }

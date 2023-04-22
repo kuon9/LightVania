@@ -131,9 +131,13 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if(feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground","Hazards")))
         {
             anim.SetBool("IsJumping", false);
+        }
+        else if(other.tag == "Hazards")
+        {
+            Debug.Log("Taking damage");
         }
     //     else if(other.tag == "Platform")
     //     {

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject player;
+    GameJam gamejamControls;
     
     [Header("PlayerAttributes")]
     [SerializeField] float playerSpeed = 10f;
@@ -48,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         // if(canMove)
         {
             Run();
-            SpriteDirection();  
+            SpriteDirection();
         }    
         // we're creating down button to affect fall gravity multiplier;
         // if(rigidbody.velocity.y < 0)

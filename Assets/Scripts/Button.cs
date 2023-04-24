@@ -17,13 +17,13 @@ public class Button : MonoBehaviour
     }
 
 
-    // void OnTriggerEnter2D(Collider2D other) 
-    // {
-    //     if(other.tag == "Player")
-    //     {
-    //         door.GetComponent<Animator>().Play("Opening");    
-    //     }    
-    // }
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+        if(other.tag == "Projectile")
+        {
+            door.GetComponent<Animator>().Play("Opening");    
+        }    
+    }
 
 
 
@@ -36,13 +36,13 @@ public class Button : MonoBehaviour
     // } 
 
 
-    void OnCollisionExit2D(Collision2D col)
-    {
-        if(col.gameObject.CompareTag("Player"))
-        {
-            door.GetComponent<Animator>().Play("Closing");
-            Debug.Log("Closing");
-        }
-    }
+    // void OnCollisionExit2D(Collision2D col)
+    // {
+    //     if(col.gameObject.CompareTag("Player"))
+    //     {
+    //         door.GetComponent<Animator>().Play("Closing");
+    //         Debug.Log("Closing");
+    //     }
+    // }
 
 }

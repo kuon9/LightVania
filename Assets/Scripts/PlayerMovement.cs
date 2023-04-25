@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject player;
     GameJam gamejamControls;
+    PlayerInput input;
     
     [Header("PlayerAttributes")]
     [SerializeField] float playerSpeed = 10f;
@@ -31,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     Animator anim;
     Rigidbody2D rigidbody;
     BoxCollider2D feetCollider;
+    CapsuleCollider2D playerCollider;
+    public Vector2 Checkpoint;
     
     
     // Start is called before the first frame update
@@ -39,7 +42,8 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
         feetCollider = GetComponent<BoxCollider2D>();
-        audioSource = GetComponent<AudioSource>(); 
+        audioSource = GetComponent<AudioSource>();
+        playerCollider = GetComponent<CapsuleCollider2D>(); 
     }
 
     // Update is called once per frame
@@ -50,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Run();
             SpriteDirection();
+            Death();
         }    
         // we're creating down button to affect fall gravity multiplier;
         // if(rigidbody.velocity.y < 0)
@@ -150,6 +155,36 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
         }  
     }
+
+
+
+    public void Death()
+    {
+        if(playerCollider.IsTouchingLayers(LayerMask.GetMask("Enemy","Hazards","Light")))
+        {
+            StartCoroutine(Respawn());
+            Debug.Log("death");
+        }
+    }
+
+       public IEnumerator Respawn()
+    {
+        print("Hit me");
+        //audioSource.PlayOneShot(gameOverSFX);
+        //disables movement after setactive, this stops movement all together and prevents previous movement
+        input.actions.FindAction("Move").Disable();
+        isAlive = false;
+        // myAnimator.SetTrigger("Death");
+        // rigidbody.velocity = deathKick;
+        yield return new WaitForSeconds(1);
+        FindObjectOfType<GameSession>().ProcessPlayerDeath(); // calling function from another script and activate it.
+        player.SetActive(false);
+        player.transform.position = Checkpoint;
+       input.actions.FindAction("Move").Enable();
+        player.SetActive(true);
+        isAlive = true;
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if(feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground","Hazards")))
@@ -175,6 +210,8 @@ public class PlayerMovement : MonoBehaviour
     //         player.transform.parent = null;
     //     }
     // }
+
+    
 
     void SpriteDirection()
     {

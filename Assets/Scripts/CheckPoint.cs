@@ -19,13 +19,13 @@ public class CheckPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player" && !isChecked)
+        if(other.gameObject.CompareTag("Player") && (!isChecked))
         {
-            //GameSession.playerLives++;
+            GameSession.playerLives++;
             Debug.Log("New Checkpoint acquired");
             audioSource.PlayOneShot(chcekPointSFX);
             isChecked = true;
-            //FindObjectOfType<PlayerMovement>().Checkpoint = transform.position;
+            FindObjectOfType<PlayerMovement>().Checkpoint = transform.position;
         }
     }
 }

@@ -23,7 +23,7 @@ public class CheckPoint : MonoBehaviour
         {
             GameSession.playerLives++;
             Debug.Log("New Checkpoint acquired");
-            audioSource.PlayOneShot(chcekPointSFX);
+            //audioSource.PlayOneShot(chcekPointSFX);
             isChecked = true;
             FindObjectOfType<PlayerMovement>().Checkpoint = transform.position;
         }

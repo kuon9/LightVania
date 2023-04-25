@@ -6,22 +6,21 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject player;
-    GameJam gamejamControls;
     PlayerInput input;
-    
+     
     [Header("PlayerAttributes")]
     [SerializeField] float playerSpeed = 10f;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
     [SerializeField] float fallGravityMultiplier = 2f;
     [SerializeField] float gravityScale = 1f;
+    [SerializeField] Vector2 deathKick = new Vector2(0f,-5f); 
     
 
     [Header("Arrow")]
      [SerializeField] GameObject  arrow;
      [SerializeField] Transform arrowSpawn;
 
-    Vector2 MovementInput;
 
     public bool isAlive = true;
     //bool isGrounded = true;
@@ -29,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     bool isJumping;
 
     AudioSource audioSource;
+    Vector2 MovementInput;
     Animator anim;
     Rigidbody2D rigidbody;
     BoxCollider2D feetCollider;
@@ -43,7 +43,8 @@ public class PlayerMovement : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         feetCollider = GetComponent<BoxCollider2D>();
         audioSource = GetComponent<AudioSource>();
-        playerCollider = GetComponent<CapsuleCollider2D>(); 
+        playerCollider = GetComponent<CapsuleCollider2D>();
+        input = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -56,15 +57,6 @@ public class PlayerMovement : MonoBehaviour
             SpriteDirection();
             Death();
         }    
-        // we're creating down button to affect fall gravity multiplier;
-        // if(rigidbody.velocity.y < 0)
-        // {
-        //     rigidbody.gravityScale = gravityScale * fallGravityMultiplier;
-        // }
-        // else
-        // {
-        //     rigidbody.gravityScale = gravityScale;
-        // }
     }
 
     void OnMove(InputValue input)
@@ -167,20 +159,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-       public IEnumerator Respawn()
+    public IEnumerator Respawn()
     {
         print("Hit me");
         //audioSource.PlayOneShot(gameOverSFX);
         //disables movement after setactive, this stops movement all together and prevents previous movement
         input.actions.FindAction("Move").Disable();
+        playerCollider.enabled = false;
         isAlive = false;
-        // myAnimator.SetTrigger("Death");
-        // rigidbody.velocity = deathKick;
-        yield return new WaitForSeconds(1);
+        anim.SetTrigger("Death");
+        rigidbody.velocity = deathKick;
+        yield return new WaitForSeconds(2);
         FindObjectOfType<GameSession>().ProcessPlayerDeath(); // calling function from another script and activate it.
         player.SetActive(false);
+        playerCollider.enabled = true;
         player.transform.position = Checkpoint;
-       input.actions.FindAction("Move").Enable();
+        input.actions.FindAction("Move").Enable();
         player.SetActive(true);
         isAlive = true;
     }
@@ -193,25 +187,10 @@ public class PlayerMovement : MonoBehaviour
             isJumping = false;
             rigidbody.gravityScale = gravityScale;
         }
-        else if(other.tag == "Hazards")
-        {
-            Debug.Log("Taking damage");
-        }
-    //     else if(other.tag == "Platform")
-    //     {
-    //         player.transform.parent = other.gameObject.transform;
-    //     }
+        // else if(other.tag == "Hazards")
+        // {
+        //     Debug.Log("Taking damage");
      }
-
-    // void OnTriggerExit2D(Collider2D other)
-    // {
-    //     if(other.tag == "Platform")
-    //     {
-    //         player.transform.parent = null;
-    //     }
-    // }
-
-    
 
     void SpriteDirection()
     {

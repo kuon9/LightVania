@@ -7,9 +7,9 @@ using TMPro;
 public class GameSession : MonoBehaviour
 {
     public static int playerLives = 3;
-    [SerializeField] int score = 0;
+    //[SerializeField] int score = 0;
     [SerializeField] TextMeshProUGUI livesText;
-    [SerializeField] TextMeshProUGUI scoreText;
+    //[SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] GameObject gameOverUI;
     [SerializeField] GameObject player;
     //[SerializeField] Fader fader;
@@ -31,7 +31,7 @@ public class GameSession : MonoBehaviour
     void Start()
     {
         livesText.text = playerLives.ToString();
-        scoreText.text = score.ToString();
+        //scoreText.text = score.ToString();
     }
 
     void Update()
@@ -70,11 +70,11 @@ public class GameSession : MonoBehaviour
         livesText.text = playerLives.ToString();
     }
 
-    public void AddScore(int addPoints)
-    {
-        score += addPoints;
-        scoreText.text = score.ToString();
-    }
+    // public void AddScore(int addPoints)
+    // {
+    //     score += addPoints;
+    //     scoreText.text = score.ToString();
+    // }
     
     public void AddLife()
     {

@@ -7,15 +7,19 @@ using UnityEngine.UI;
 public class Lever : MonoBehaviour
 {
     
-    GameJam gamejamControls;
+    
     [SerializeField] GameObject door;
     [SerializeField] GameObject popUpText;
     [SerializeField] GameObject FirstLight;
     [SerializeField] GameObject SecondLight;
+    door Door;
 
 
     public bool playerinRange;
     public bool IsUsed;
+
+    public bool IsClosing;
+    public bool IsOpening;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +31,8 @@ public class Lever : MonoBehaviour
     void Update()
     {
         if(!playerinRange) {return ;}
-        OpenDoor();    
+        OpenDoor();
+        CloseDoor();    
     }
 
 
@@ -57,9 +62,10 @@ public class Lever : MonoBehaviour
     void OpenDoor()
     {
                             // This is the equivalent of Input.GetKey(KeyCode.E)
-        if(playerinRange && Keyboard.current.eKey.wasPressedThisFrame)
+        if(playerinRange && Keyboard.current.eKey.wasPressedThisFrame && IsOpening )
         {
             door.GetComponent<Animator>().Play("Opening2");
+            
             /* AudioSource sound */
             popUpText.SetActive(false);
             IsUsed = true;
@@ -68,4 +74,18 @@ public class Lever : MonoBehaviour
         }    
     }
 
+    void CloseDoor()
+    {
+                                    // This is the equivalent of Input.GetKey(KeyCode.E)
+        if(playerinRange && Keyboard.current.eKey.wasPressedThisFrame && IsClosing )
+        {
+            door.GetComponent<Animator>().Play("Closing2");
+            
+            /* AudioSource sound */
+            popUpText.SetActive(false);
+            IsUsed = true;
+            FirstLight.SetActive(false);
+            SecondLight.SetActive(true);
+        }        
+    }
 }

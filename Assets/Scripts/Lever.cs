@@ -10,6 +10,9 @@ public class Lever : MonoBehaviour
     GameJam gamejamControls;
     [SerializeField] GameObject door;
     [SerializeField] GameObject popUpText;
+    [SerializeField] GameObject FirstLight;
+    [SerializeField] GameObject SecondLight;
+
 
     public bool playerinRange;
     public bool IsUsed;
@@ -60,6 +63,8 @@ public class Lever : MonoBehaviour
             /* AudioSource sound */
             popUpText.SetActive(false);
             IsUsed = true;
+            FirstLight.SetActive(false);
+            SecondLight.SetActive(true);
         }    
     }
 

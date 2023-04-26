@@ -148,8 +148,6 @@ public class PlayerMovement : MonoBehaviour
         }  
     }
 
-
-
     public void Death()
     {
         if(playerCollider.IsTouchingLayers(LayerMask.GetMask("Enemy","Hazards","Light")))

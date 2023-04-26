@@ -24,7 +24,7 @@ public class Button : MonoBehaviour
             Debug.Log("Opening");
             SwitchLights();
         }
-        // else if(col.gameObject.CompareTag("Player") && IsClosing)
+        else //if(col.gameObject.CompareTag("Player") && IsClosing)
         {
             door.GetComponent<Animator>().Play("Closing");  
             SwitchLights();  

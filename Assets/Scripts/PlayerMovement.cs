@@ -150,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Death()
     {
-        if(playerCollider.IsTouchingLayers(LayerMask.GetMask("Enemy","Hazards","Light")))
+        if(playerCollider.IsTouchingLayers(LayerMask.GetMask("Enemy","Light","Hazards")))
         {
             StartCoroutine(Respawn());
             Debug.Log("death");

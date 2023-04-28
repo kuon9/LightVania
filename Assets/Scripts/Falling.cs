@@ -18,18 +18,21 @@ public class Falling : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Player")
         {
-            if(other.tag == "Player")
-            {
-                rb.isKinematic = false;
-                Destroy(this.gameObject, timeToDisappear);
-            }
+            rb.isKinematic = false;
+            Destroy(this.gameObject, timeToDisappear);
         }
+    }
     
-    // make the respawn enumerator later on playermovement script.
-    // void OnCollisionEnter2D(Collision2D other )
-    // {
-    //     StartCoroutine(playermovement.Respawn());
-    // } 
+    
+    void OnCollisionEnter2D(Collision2D col)
+    {
+       if(col.gameObject.tag =="Player")
+       {
+            StartCoroutine(playermovement.Respawn()); 
+       }
+    } 
 }
 

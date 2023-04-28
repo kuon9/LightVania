@@ -198,7 +198,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 6bba35cb0083eb745bcf9ae702d5036f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -229,7 +229,75 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 20eb3b78-235e-4a79-85d9-a113839cbf37
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 59a504fb-b5e4-4f01-9a29-ac1105ac6f6c
+    m_ActionName: Player/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7e8a5dd1-30e7-4f1f-b4bb-7dcc5088c4d0
+    m_ActionName: Player/Melee[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0e0503c9-b73d-4619-9b71-15d9cb283cbf
+    m_ActionName: Player/Range[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5d862b98-de8b-40b8-a007-d566fd8fc722
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 18d87d47-0aa6-4f04-b964-7c97e3043614
+    m_ActionName: Player/Down[/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8c4eace2-b909-4bab-b391-46be758c7be4
+    m_ActionName: Player/Use[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0d35fd5d-2b0b-4e3b-b1b1-c78c2dd2cc5e
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c387537c-9aa1-4c2e-9838-7374455b8602
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6f04143b-13c8-4c1e-9571-d952ec02241a
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a36d7c38-5c81-4579-aeaa-0e113e4ace50
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4009dad9-4dd8-4d91-ac38-a5926afca1b7
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 019b609c-bb31-49bd-9649-28bf501ba520
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2d5ec794-a605-4993-9467-5b7baca342f1
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 09a4716a-8266-4fc8-bf22-6bf51cb40f16
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1c02ca6f-d348-4353-86e2-8f217bf5ff9b
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bddd15f1-da90-4c37-a5d6-073e48a5f4b5
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -253,6 +321,8 @@ MonoBehaviour:
   climbSpeed: 5
   fallGravityMultiplier: 2
   gravityScale: 1
+  deathKick: {x: 5, y: 5}
   arrow: {fileID: 8230058054506839999, guid: 7a2250a8a053d7b48960e84fcfaae098, type: 3}
   arrowSpawn: {fileID: 8464498810094444787}
   isAlive: 1
+  Checkpoint: {x: 0, y: 0}

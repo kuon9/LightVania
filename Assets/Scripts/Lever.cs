@@ -67,6 +67,7 @@ public class Lever : MonoBehaviour
             door.GetComponent<Animator>().Play("Opening2");
             
             /* AudioSource sound */
+            Platform.IsActive = true;
             popUpText.SetActive(false);
             IsUsed = true;
             FirstLight.SetActive(false);

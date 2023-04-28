@@ -7,6 +7,7 @@ public class Platform : MonoBehaviour
     [SerializeField] Transform pos1, pos2;
     [SerializeField] float speed;
     Vector3 nextPos;
+    public static bool IsActive;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class Platform : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(!IsActive) {return;}
         if(transform.position == pos1.position)
         {
             nextPos = pos2.position;

@@ -12,7 +12,9 @@ public class Lever : MonoBehaviour
     [SerializeField] GameObject popUpText;
     [SerializeField] GameObject FirstLight;
     [SerializeField] GameObject SecondLight;
+    [SerializeField] GameObject platform;
     door Door;
+    
 
 
     public bool playerinRange;
@@ -67,7 +69,7 @@ public class Lever : MonoBehaviour
             door.GetComponent<Animator>().Play("Opening2");
             
             /* AudioSource sound */
-            Platform.IsActive = true;
+            platform.GetComponent<Platform>().IsActive = true;
             popUpText.SetActive(false);
             IsUsed = true;
             FirstLight.SetActive(false);

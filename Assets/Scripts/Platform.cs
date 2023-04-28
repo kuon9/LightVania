@@ -7,7 +7,7 @@ public class Platform : MonoBehaviour
     [SerializeField] Transform pos1, pos2;
     [SerializeField] float speed;
     Vector3 nextPos;
-    public static bool IsActive;
+    public bool IsActive;
 
     // Start is called before the first frame update
     void Start()

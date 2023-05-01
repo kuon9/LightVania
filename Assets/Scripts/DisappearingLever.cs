@@ -12,7 +12,7 @@ public class DisappearingLever : MonoBehaviour
     
     public bool playerinRange;
     public bool IsUsed;
-    public bool IsVanishing;
+    //public bool IsVanishing;
     
     
     // Start is called before the first frame update

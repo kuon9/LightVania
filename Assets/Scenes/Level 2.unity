@@ -9723,6 +9723,38 @@ PrefabInstance:
       propertyPath: Tiles.Array.data[6]
       value: 
       objectReference: {fileID: 973814052}
+    - target: {fileID: 796580964706948609, guid: 4812883823a891a45b80661b4a69f0fa, type: 3}
+      propertyPath: disappearingGameObjects.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 796580964706948609, guid: 4812883823a891a45b80661b4a69f0fa, type: 3}
+      propertyPath: disappearingGameObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 2050331960}
+    - target: {fileID: 796580964706948609, guid: 4812883823a891a45b80661b4a69f0fa, type: 3}
+      propertyPath: disappearingGameObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 15386183}
+    - target: {fileID: 796580964706948609, guid: 4812883823a891a45b80661b4a69f0fa, type: 3}
+      propertyPath: disappearingGameObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 653969615}
+    - target: {fileID: 796580964706948609, guid: 4812883823a891a45b80661b4a69f0fa, type: 3}
+      propertyPath: disappearingGameObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 476156380}
+    - target: {fileID: 796580964706948609, guid: 4812883823a891a45b80661b4a69f0fa, type: 3}
+      propertyPath: disappearingGameObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 1343571460}
+    - target: {fileID: 796580964706948609, guid: 4812883823a891a45b80661b4a69f0fa, type: 3}
+      propertyPath: disappearingGameObjects.Array.data[5]
+      value: 
+      objectReference: {fileID: 697427179}
+    - target: {fileID: 796580964706948609, guid: 4812883823a891a45b80661b4a69f0fa, type: 3}
+      propertyPath: disappearingGameObjects.Array.data[6]
+      value: 
+      objectReference: {fileID: 973814052}
     - target: {fileID: 2554366392034229509, guid: 4812883823a891a45b80661b4a69f0fa, type: 3}
       propertyPath: m_Name
       value: DisappearingLever

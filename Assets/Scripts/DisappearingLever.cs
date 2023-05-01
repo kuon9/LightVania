@@ -6,11 +6,13 @@ using UnityEngine.UI;
 
 public class DisappearingLever : MonoBehaviour
 {
-    [SerializeField] GameObject [] Tiles;
+    [SerializeField] GameObject [] disappearingGameObjects;
+    [SerializeField] GameObject [] appearingGameObjects;
     [SerializeField] GameObject popUpText;
     
     public bool playerinRange;
     public bool IsUsed;
+    public bool IsVanishing;
     
     
     // Start is called before the first frame update
@@ -47,12 +49,14 @@ public class DisappearingLever : MonoBehaviour
 
     void VanishTiles()
     {
-        for(int i = 0; i < Tiles.Length; i++)
+        for(int i = 0; i < disappearingGameObjects.Length; i++)
+        for(int u = 0; u< appearingGameObjects.Length; u++)
         if(playerinRange && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            Tiles[i].SetActive(false);
+            disappearingGameObjects[i].SetActive(false);
+            appearingGameObjects[u].SetActive(true);
             IsUsed = true;
             //audioSource.PlayOneShot(AudioClip);    
-        }    
-    }
+        }
+    }    
 }

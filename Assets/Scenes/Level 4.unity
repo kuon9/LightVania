@@ -2874,6 +2874,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1694185926626262822, guid: 4379bbb4d25c62e41956281fff077d81, type: 3}
   m_PrefabInstance: {fileID: 675886250}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &675886254 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1659793292583319855, guid: 4379bbb4d25c62e41956281fff077d81, type: 3}
+  m_PrefabInstance: {fileID: 675886250}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &719778601 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5217028277655442336, guid: e61d67fc9b954574d990c63aae5e5d60, type: 3}
@@ -5880,7 +5891,7 @@ PrefabInstance:
     - target: {fileID: 3333142065450967196, guid: c441a5169fbc19e4694aa66e64279e94, type: 3}
       propertyPath: livesText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 675886254}
     - target: {fileID: 3333142065450967196, guid: c441a5169fbc19e4694aa66e64279e94, type: 3}
       propertyPath: gameOverUI
       value: 

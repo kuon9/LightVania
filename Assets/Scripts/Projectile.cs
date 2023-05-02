@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
         // putting -arrowVelocity makes arrow shoot backwards.
         myRigidbody.velocity = new Vector2(arrowVelocity, 0f); // (x,y) I want arrow to move 1 velocity horizontal
         //I tried putting this under update method and this made arrows change direction in midair as I changed player's directions.
-        //ArrowDirection();
+        
     }
 
     void OnTriggerEnter2D(Collider2D other) 

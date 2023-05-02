@@ -83,7 +83,7 @@ public class Lever : MonoBehaviour
         if(playerinRange && Keyboard.current.eKey.wasPressedThisFrame && IsClosing )
         {
             door.GetComponent<Animator>().Play("Closing2");
-            
+           platform.GetComponent<Platform>().IsActive = true; 
             /* AudioSource sound */
             popUpText.SetActive(false);
             IsUsed = true;

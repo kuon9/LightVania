@@ -48,16 +48,16 @@ public class Projectile : MonoBehaviour
         
         if(boxCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
-            Destroy(other.gameObject);
+            Destroy(this.gameObject);
         }
         //  if i put (other.gameObject) then this arrow will destroy the gameobject with colliders enabled.
         if(other.gameObject.tag == "Ground")
         {
-            Destroy(other.gameObject);    
+            Destroy(this.gameObject);    
         }
         else if (other.gameObject.tag == "Platform")
         {
-            Destroy(other.gameObject);
+            Destroy(this.gameObject);
         }
     }
     // Dictating arrow direction based on player's localscale.x, this allows arrow to face the correct direction.

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5376068654065470999}
   - component: {fileID: 8198476203803432567}
   - component: {fileID: 7853020401118400721}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Arrow
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8230058054506839999}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

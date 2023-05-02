@@ -8,7 +8,7 @@ public class LevelExit : MonoBehaviour
 {
     [SerializeField] float levelloadDelay = 2f;
     [SerializeField] float LevelExitSlowMoFactor = 0.2f;
-    //[SerializeField] GameObject gameClearUI;
+    [SerializeField] GameObject gameClearUI;
     public static bool isCleared = false;
     // public string menuscene = "MainMenu";
     // public string nextLevel = "Level 2";
@@ -23,8 +23,9 @@ public class LevelExit : MonoBehaviour
         if(other.tag == "Player");
         {
             StartCoroutine(SlowEffect());
-            //gameClearUI.SetActive(true);
+            gameClearUI.SetActive(true);
             isCleared = true;
+            Cursor.visible = true;
         }
     }
 
@@ -33,7 +34,6 @@ public class LevelExit : MonoBehaviour
         Time.timeScale = LevelExitSlowMoFactor; // time slows down for 0.2f seconds.
         yield return new WaitForSecondsRealtime(levelloadDelay);
         Time.timeScale = 0f; // slow down into 0 frames.
-        LoadNextLevel();
     }
 
     public void LoadNextLevel() // function has to be public to pop up runtime for UI buttons

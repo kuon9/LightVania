@@ -91,17 +91,17 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    public void OnMelee(InputValue input)
-    {
-        if(!isAlive) {return;}
-        {
-            playerSpeed = 0f;
-            //canMove = false;
-            anim.SetBool("IsAttacking", true);
-            //anim.SetTrigger("IsAttacking")
-            StartCoroutine(AttackReset());
-        }
-    }
+    // public void OnMelee(InputValue input)
+    // {
+    //     if(!isAlive) {return;}
+    //     {
+    //         playerSpeed = 0f;
+    //         //canMove = false;
+    //         anim.SetBool("IsAttacking", true);
+    //         //anim.SetTrigger("IsAttacking")
+    //         StartCoroutine(AttackReset());
+    //     }
+    // }
 
     IEnumerator FireReset()
     {
@@ -111,13 +111,13 @@ public class PlayerMovement : MonoBehaviour
         playerSpeed = 4f;
     }
 
-    IEnumerator AttackReset()
-    {
-        yield return new WaitForSeconds(0.8f);
-        anim.SetBool("IsAttacking", false);
-        //canMove = true;
-        playerSpeed = 4f;
-    }
+    // IEnumerator AttackReset()
+    // {
+    //     yield return new WaitForSeconds(0.8f);
+    //     anim.SetBool("IsAttacking", false);
+    //     //canMove = true;
+    //     playerSpeed = 4f;
+    // }
 
     void ProjectileFire()
     {

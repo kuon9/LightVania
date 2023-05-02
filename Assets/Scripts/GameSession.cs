@@ -31,6 +31,7 @@ public class GameSession : MonoBehaviour
     void Start()
     {
         livesText.text = playerLives.ToString();
+        Cursor.visible = false;
         //scoreText.text = score.ToString();
     }
 

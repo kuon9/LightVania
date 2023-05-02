@@ -46,15 +46,6 @@ public partial class @LightVania : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Melee"",
-                    ""type"": ""Button"",
-                    ""id"": ""7e8a5dd1-30e7-4f1f-b4bb-7dcc5088c4d0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Range"",
                     ""type"": ""Button"",
                     ""id"": ""0e0503c9-b73d-4619-9b71-15d9cb283cbf"",
@@ -237,61 +228,6 @@ public partial class @LightVania : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Melee"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Melee"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""886e731e-7071-4ae4-95c0-e61739dad6fd"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Touch"",
-                    ""action"": ""Melee"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ee3d0cd2-254e-47a7-a8cb-bc94d9658c54"",
-                    ""path"": ""<Joystick>/trigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Joystick"",
-                    ""action"": ""Melee"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8255d333-5683-4943-a58a-ccb207ff1dce"",
-                    ""path"": ""<XRController>/{PrimaryAction}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XR"",
-                    ""action"": ""Melee"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""31bc4ac7-abf3-42db-8599-7e4911ba36ac"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -304,7 +240,7 @@ public partial class @LightVania : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8fea5a6f-4455-403d-92f6-a34309a8c1ee"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -851,6 +787,34 @@ public partial class @LightVania : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""ecf8aa1d-cafb-43a8-bb43-c7c7b9982a6d"",
+            ""actions"": [
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""2aca0c31-129b-4175-aaf5-dc3b28de7010"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e1647c0a-12ef-4480-a154-685ba374581c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -920,7 +884,6 @@ public partial class @LightVania : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_Melee = m_Player.FindAction("Melee", throwIfNotFound: true);
         m_Player_Range = m_Player.FindAction("Range", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Down = m_Player.FindAction("Down", throwIfNotFound: true);
@@ -937,6 +900,9 @@ public partial class @LightVania : IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Escape = m_Menu.FindAction("Escape", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -998,7 +964,6 @@ public partial class @LightVania : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_Melee;
     private readonly InputAction m_Player_Range;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Down;
@@ -1009,7 +974,6 @@ public partial class @LightVania : IInputActionCollection2, IDisposable
         public PlayerActions(@LightVania wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
-        public InputAction @Melee => m_Wrapper.m_Player_Melee;
         public InputAction @Range => m_Wrapper.m_Player_Range;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Down => m_Wrapper.m_Player_Down;
@@ -1029,9 +993,6 @@ public partial class @LightVania : IInputActionCollection2, IDisposable
                 @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Melee.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMelee;
-                @Melee.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMelee;
-                @Melee.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMelee;
                 @Range.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRange;
                 @Range.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRange;
                 @Range.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRange;
@@ -1054,9 +1015,6 @@ public partial class @LightVania : IInputActionCollection2, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Melee.started += instance.OnMelee;
-                @Melee.performed += instance.OnMelee;
-                @Melee.canceled += instance.OnMelee;
                 @Range.started += instance.OnRange;
                 @Range.performed += instance.OnRange;
                 @Range.canceled += instance.OnRange;
@@ -1178,6 +1136,39 @@ public partial class @LightVania : IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_Escape;
+    public struct MenuActions
+    {
+        private @LightVania m_Wrapper;
+        public MenuActions(@LightVania wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Escape => m_Wrapper.m_Menu_Escape;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @Escape.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnEscape;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1227,7 +1218,6 @@ public partial class @LightVania : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnMelee(InputAction.CallbackContext context);
         void OnRange(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnDown(InputAction.CallbackContext context);
@@ -1245,5 +1235,9 @@ public partial class @LightVania : IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnEscape(InputAction.CallbackContext context);
     }
 }

@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!isAlive) {return;}
+        if(!isAlive|| LevelExit.isCleared) {return;}
         // if(canMove)
         {
             Run();
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnMove(InputValue input)
     {
-        if(!isAlive) {return;}
+        if(!isAlive || PauseMenu.isPaused || LevelExit.isCleared) {return;}
         // if(canMove)
         {
             MovementInput = input.Get<Vector2>();    
@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnRange(InputValue input)
     {
-        if(!isAlive) {return;}
+        if(!isAlive|| PauseMenu.isPaused || LevelExit.isCleared) {return;}
         {
             playerSpeed = 0f;
             //canMove = false;

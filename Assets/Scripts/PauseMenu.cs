@@ -83,6 +83,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         AudioListener.pause = false;
         GameSession.playerLives = 3;
+        isPaused = false;
     }
     
     public void LoadMainMenu()
@@ -92,6 +93,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1; 
         LevelExit.isCleared = false;
         GameSession.playerLives = 3;
+        isPaused = false;
 	}
 
 }

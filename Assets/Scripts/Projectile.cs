@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other) 
     {
         
-        if(boxCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if(boxCollider.IsTouchingLayers(LayerMask.GetMask("Ground","Hazards")))
         {
             Destroy(this.gameObject);
         }

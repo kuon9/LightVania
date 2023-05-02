@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("SFX")]
     [SerializeField] AudioClip gameOverSFX;
     [SerializeField] AudioClip fireWorksSFX;
+    [SerializeField] AudioClip arrowSfx;
 
 
     [Header("Arrow")]
@@ -82,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         if(!isAlive|| PauseMenu.isPaused || LevelExit.isCleared) {return;}
         {
             playerSpeed = 0f;
+            audioSource.PlayOneShot(arrowSfx);
             //canMove = false;
             //anim.SetTrigger("IsShooting");
             anim.SetBool("IsShooting", true);

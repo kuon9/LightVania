@@ -12,7 +12,7 @@ public class GameSession : MonoBehaviour
     //[SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] GameObject gameOverUI;
     [SerializeField] GameObject player;
-    //[SerializeField] Fader fader;
+    [SerializeField] Fader fader;
     
 
     // void Awake()
@@ -51,7 +51,8 @@ public class GameSession : MonoBehaviour
         {
             Destroy(player);
             Time.timeScale = 0f;
-            //gameOverUI.SetActive(true);    
+            gameOverUI.SetActive(true);
+            Cursor.visible = true;;    
         }
     }
     

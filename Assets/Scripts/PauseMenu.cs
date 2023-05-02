@@ -62,7 +62,8 @@ public class PauseMenu : MonoBehaviour
         // Puts whole game in pause
         Time.timeScale = 0;
         AudioListener.pause = true;
-        PauseUI.SetActive(true);    
+        PauseUI.SetActive(true);
+        Cursor.visible = true; 
     }
 
     public void DeactivateMenu()
@@ -71,7 +72,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         AudioListener.pause = false;
         PauseUI.SetActive(false);
-        isPaused = false;  
+        isPaused = false;
+        Cursor.visible = false;  
     }
 
     // This function has to be public to be accessed in runtime for UI buttons.
@@ -84,6 +86,7 @@ public class PauseMenu : MonoBehaviour
         AudioListener.pause = false;
         GameSession.playerLives = 3;
         isPaused = false;
+        Cursor.visible = false;  
     }
     
     public void LoadMainMenu()

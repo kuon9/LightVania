@@ -126,3 +126,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelloadDelay: 2
   LevelExitSlowMoFactor: 0.2
+  gameClearUI: {fileID: 0}
+  fader: {fileID: 0}

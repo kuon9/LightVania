@@ -9,6 +9,7 @@ public class LevelExit : MonoBehaviour
     [SerializeField] float levelloadDelay = 2f;
     [SerializeField] float LevelExitSlowMoFactor = 0.2f;
     [SerializeField] GameObject gameClearUI;
+    PlayerMovement player;
     public static bool isCleared = false;
     // public string menuscene = "MainMenu";
     // public string nextLevel = "Level 2";
@@ -18,9 +19,15 @@ public class LevelExit : MonoBehaviour
     
     //public Fader fader;
     
+
+    void Start()
+    {
+        player = FindObjectOfType<PlayerMovement>();
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player");
+        if(other.tag == "Player" && player.isAlive);
         {
             StartCoroutine(SlowEffect());
             gameClearUI.SetActive(true);

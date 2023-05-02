@@ -12,7 +12,7 @@ public class GameSession : MonoBehaviour
     //[SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] GameObject gameOverUI;
     [SerializeField] GameObject player;
-    [SerializeField] Fader fader;
+    //[SerializeField] Fader fader;
     
 
     // void Awake()

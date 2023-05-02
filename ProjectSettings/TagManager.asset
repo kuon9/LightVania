@@ -8,11 +8,13 @@ TagManager:
   - Enemy
   - Platform
   - Hazards
+  - Ground
+  - FireWorks
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Projectile
+  - 
   - Water
   - UI
   - Ground
@@ -22,7 +24,7 @@ TagManager:
   - Platform
   - Hazards
   - Light
-  - 
+  - Projectile
   - 
   - 
   - 

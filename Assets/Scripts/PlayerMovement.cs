@@ -17,9 +17,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 deathKick = new Vector2(0f,-5f); 
     
 
+
+    [Header("SFX")]
+    [SerializeField] AudioClip gameOverSFX;
+    [SerializeField] AudioClip fireWorksSFX;
+
+
     [Header("Arrow")]
      [SerializeField] GameObject  arrow;
      [SerializeField] Transform arrowSpawn;
+
+
+
 
 
     public bool isAlive = true;
@@ -160,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator Respawn()
     {
         print("Hit me");
-        //audioSource.PlayOneShot(gameOverSFX);
+        audioSource.PlayOneShot(gameOverSFX);
         //disables movement after setactive, this stops movement all together and prevents previous movement
         input.actions.FindAction("Move").Disable();
         playerCollider.enabled = false;
@@ -184,6 +193,10 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("IsJumping",false);
             isJumping = false;
             rigidbody.gravityScale = gravityScale;
+        }
+        else if (other.tag == "FireWorks")
+        {
+            audioSource.PlayOneShot(fireWorksSFX);
         }
         // else if(other.tag == "Hazards")
         // {

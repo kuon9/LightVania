@@ -13,7 +13,9 @@ public class Lever : MonoBehaviour
     [SerializeField] GameObject FirstLight;
     [SerializeField] GameObject SecondLight;
     [SerializeField] GameObject platform;
-    door Door;
+    [SerializeField] AudioClip doorOpenSFX;
+    door Door; 
+    AudioSource audioSource;
     
 
 
@@ -26,6 +28,7 @@ public class Lever : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         IsUsed = false;    
     }
 
@@ -67,6 +70,7 @@ public class Lever : MonoBehaviour
         if(playerinRange && Keyboard.current.eKey.wasPressedThisFrame && IsOpening )
         {
             door.GetComponent<Animator>().Play("Opening2");
+            audioSource.PlayOneShot(doorOpenSFX);
             
             /* AudioSource sound */
             platform.GetComponent<Platform>().IsActive = true;
@@ -83,7 +87,8 @@ public class Lever : MonoBehaviour
         if(playerinRange && Keyboard.current.eKey.wasPressedThisFrame && IsClosing )
         {
             door.GetComponent<Animator>().Play("Closing2");
-           platform.GetComponent<Platform>().IsActive = true; 
+            audioSource.PlayOneShot(doorOpenSFX);
+            platform.GetComponent<Platform>().IsActive = true; 
             /* AudioSource sound */
             popUpText.SetActive(false);
             IsUsed = true;

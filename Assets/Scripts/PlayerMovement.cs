@@ -172,14 +172,14 @@ public class PlayerMovement : MonoBehaviour
         audioSource.PlayOneShot(gameOverSFX);
         //disables movement after setactive, this stops movement all together and prevents previous movement
         input.actions.FindAction("Move").Disable();
-        playerCollider.enabled = false;
+        //playerCollider.enabled = false;
         isAlive = false;
         anim.SetTrigger("Death");
         rigidbody.velocity = deathKick;
         yield return new WaitForSeconds(2);
         FindObjectOfType<GameSession>().ProcessPlayerDeath(); // calling function from another script and activate it.
         player.SetActive(false);
-        playerCollider.enabled = true;
+        //playerCollider.enabled = true;
         player.transform.position = Checkpoint;
         input.actions.FindAction("Move").Enable();
         player.SetActive(true);

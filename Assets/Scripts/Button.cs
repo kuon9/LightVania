@@ -6,11 +6,17 @@ public class Button : MonoBehaviour
 {
     public GameObject door;
     [SerializeField] GameObject firstLight, secondLight;
- 
+    [SerializeField] AudioClip doorOpenSFX;
+    
+    AudioSource audioSource;
     public bool IsOpening;
     // public bool IsClosing;
 
 
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -23,10 +29,12 @@ public class Button : MonoBehaviour
             door.GetComponent<Animator>().Play("Opening");
             Debug.Log("Opening");
             SwitchLights();
+            audioSource.PlayOneShot(doorOpenSFX);
         }
         else //if(col.gameObject.CompareTag("Player") && IsClosing)
         {
-            door.GetComponent<Animator>().Play("Closing");  
+            door.GetComponent<Animator>().Play("Closing");
+            audioSource.PlayOneShot(doorOpenSFX);  
             SwitchLights();  
         }
     }
@@ -37,11 +45,13 @@ public class Button : MonoBehaviour
         if(other.tag == "Projectile" && IsOpening)
         {
             door.GetComponent<Animator>().Play("Opening");
+            audioSource.PlayOneShot(doorOpenSFX);
             SwitchLights();    
         }    
         else
         {
             door.GetComponent<Animator>().Play("Closing");
+            audioSource.PlayOneShot(doorOpenSFX);
             SwitchLights();
             //IsOpening = false;
         }

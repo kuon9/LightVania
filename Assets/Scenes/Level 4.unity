@@ -1559,11 +1559,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1611660181786232560, guid: ec33d299ef06121459d7851605fc5400, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.732027
+      value: 8.555445
       objectReference: {fileID: 0}
     - target: {fileID: 1611660181786232560, guid: ec33d299ef06121459d7851605fc5400, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.66178
+      value: -5.6627197
       objectReference: {fileID: 0}
     - target: {fileID: 1611660181786232560, guid: ec33d299ef06121459d7851605fc5400, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2851,6 +2851,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4379bbb4d25c62e41956281fff077d81, type: 3}
+--- !u!1 &675886251 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1694185926676618376, guid: 4379bbb4d25c62e41956281fff077d81, type: 3}
+  m_PrefabInstance: {fileID: 675886250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &675886252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1694185925523574553, guid: 4379bbb4d25c62e41956281fff077d81, type: 3}
+  m_PrefabInstance: {fileID: 675886250}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &719778601 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5217028277655442336, guid: e61d67fc9b954574d990c63aae5e5d60, type: 3}
@@ -5842,6 +5852,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 309127747, guid: c441a5169fbc19e4694aa66e64279e94, type: 3}
+      propertyPath: PauseUI
+      value: 
+      objectReference: {fileID: 675886251}
     - target: {fileID: 3333142065450967196, guid: c441a5169fbc19e4694aa66e64279e94, type: 3}
       propertyPath: player
       value: 
@@ -5850,6 +5864,10 @@ PrefabInstance:
       propertyPath: livesText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3333142065450967196, guid: c441a5169fbc19e4694aa66e64279e94, type: 3}
+      propertyPath: gameOverUI
+      value: 
+      objectReference: {fileID: 675886252}
     - target: {fileID: 3333142065450967197, guid: c441a5169fbc19e4694aa66e64279e94, type: 3}
       propertyPath: m_Name
       value: GameSession

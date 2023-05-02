@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class DisappearingLever : MonoBehaviour
 {
     [SerializeField] GameObject [] disappearingGameObjects;
-    [SerializeField] GameObject [] appearingGameObjects;
     [SerializeField] GameObject popUpText;
+    [SerializeField] AudioClip doorOpenSFX;
+     AudioSource audioSource;
     
     public bool playerinRange;
     public bool IsUsed;
@@ -18,7 +19,8 @@ public class DisappearingLever : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        IsUsed = false;    
+        IsUsed = false;
+        audioSource = GetComponent<AudioSource>();    
     }
 
     // Update is called once per frame
@@ -50,13 +52,11 @@ public class DisappearingLever : MonoBehaviour
     void VanishTiles()
     {
         for(int i = 0; i < disappearingGameObjects.Length; i++)
-        for(int u = 0; u< appearingGameObjects.Length; u++)
         if(playerinRange && Keyboard.current.eKey.wasPressedThisFrame)
         {
             disappearingGameObjects[i].SetActive(false);
-            appearingGameObjects[u].SetActive(true);
-            IsUsed = true;
-            //audioSource.PlayOneShot(AudioClip);    
+            audioSource.PlayOneShot(doorOpenSFX);
+            IsUsed = true;   
         }
     }    
 }
